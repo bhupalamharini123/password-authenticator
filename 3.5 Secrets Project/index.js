@@ -13,30 +13,24 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// middleware
 function passwordCheck(req, res, next) {
   const password = req.body.password;
 
   if (password === process.env.PASSWORD) {
-    req.userIsAuthorised = true;
+    next(); // allow access
   } else {
-    req.userIsAuthorised = false;
+    res.sendFile(__dirname + "/public/index.html"); // deny access
   }
-
-  next();
 }
-
-app.use(passwordCheck);
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.post("/check", (req, res) => {
-  if (req.userIsAuthorised) {
-    res.sendFile(__dirname + "/public/secret.html");
-  } else {
-    res.sendFile(__dirname + "/public/index.html");
-  }
+// apply middleware only to this route
+app.post("/check", passwordCheck, (req, res) => {
+  res.sendFile(__dirname + "/public/secret.html");
 });
 
 app.listen(port, () => {
