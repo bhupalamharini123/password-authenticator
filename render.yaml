@@ -4,4 +4,4 @@ services:
     env: node
     plan: free
     buildCommand: npm install
-    startCommand: node index.js
+    startCommand:  node "3.5 Secrets Project/index.js"
