@@ -7,10 +7,9 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const app = express();
-const port = 3000;
-
 var userIsAuthorised = false; // ← MUST be here, outside everything
 
+const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 function passwordCheck(req, res, next) {
