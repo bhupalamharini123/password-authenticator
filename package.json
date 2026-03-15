@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "type":"module",
+    "body": "^5.1.0",
+    "expres": "^0.0.5",
+    "express": "^5.2.1",
+    "parser": "^0.1.4"
+  }
+}
