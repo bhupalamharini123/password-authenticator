@@ -3,5 +3,5 @@ services:
     name: express-authenticator
     env: node
     plan: free
-    buildCommand: npm install
-    startCommand:  node "3.5 Secrets Project/index.js"
+    buildCommand: cd "3.5 Secrets Project" && npm install
+    startCommand: cd "3.5 Secrets Project" && node index.js
